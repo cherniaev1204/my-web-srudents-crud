@@ -59,13 +59,13 @@ public class StudentController {
     @PostMapping("/students/update/{id}")
     public String updateStudent(@PathVariable("id") long id,
                                 Student student,
-                                BindingResult bindingResult
-    ,Model model) {
+                                BindingResult bindingResult,
+                                Model model) {
         if (bindingResult.hasErrors()) {
             student.setId(id);
             return "edit-student";
         }
         studentRepository.save(student);
-    return "redirect:/students";
+        return "redirect:/students";
     }
 }
